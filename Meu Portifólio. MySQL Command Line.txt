@@ -1,0 +1,257 @@
+nter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++----------------------+
+| Database             |
++----------------------+
+| information_schema   |
+| mysql                |
+| performance_schema   |
+| posto_de_combustivel |
+| sys                  |
+| teste25              |
++----------------------+
+6 rows in set (0.19 sec)
+
+mysql> use teste25;
+Database changed
+mysql> create table carro(
+    -> car_cod int primary key,
+    -> car_nom varchar(20) not null,
+    -> car_mar varchar(20) not null,
+    -> car_ano int not null,
+    -> car_cor varchar(15) not null,
+    -> car_pla varchar(7) primary key,
+    -> car_pre float(10,2) not null unique
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 8
+mysql> create table carro(
+    -> car_cod int primary key,
+    -> car_nom varchar(20) not null,
+    -> car_mar varchar(20) not null,
+    -> car_ano int not null,
+    -> car_cor varchar(15) not null,
+    -> car_pla varchar(7) primary key,
+    -> car_pre float(10,2) not null unique
+    -> );
+ERROR 1068 (42000): Multiple primary key defined
+mysql> create table carro(
+    -> car_cod int primary key,
+    -> car_nom varchar(20) not null,
+    -> car_mar varchar(20) not null,
+    -> car_ano int not null,
+    -> car_cor varchar(15) not null,
+    -> car_pla varchar primary key,
+    -> car_pre float(10,2) not null unique
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'primary key,
+car_pre float(10,2) not null unique
+)' at line 7
+mysql> create table carro(
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table carro(
+    -> car_cod int primary key,
+    -> car_nom varchar(20) not null,
+    -> car_mar varchar(20) not null,
+    -> car_ano int not null,
+    -> car_cor varchar(15) not null,
+    -> car_pla varchar(7) primary key,
+    -> car_pre float(10,2) not null unique
+    -> );
+ERROR 1068 (42000): Multiple primary key defined
+mysql> create table carro(
+    -> car_cod int primary key,
+    -> car_nom varchar(20) not null,
+    -> car_mar varchar(20) not null,
+    -> car_ano int not null,
+    -> car_cor varchar(15) not null,
+    -> car_pla varchar(7) not null unique,
+    -> car_pre float(10,2) not null
+    -> );
+Query OK, 0 rows affected, 1 warning (0.12 sec)
+
+mysql> desc carro;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| car_cod | int         | NO   | PRI | NULL    |       |
+| car_nom | varchar(20) | NO   |     | NULL    |       |
+| car_mar | varchar(20) | NO   |     | NULL    |       |
+| car_ano | int         | NO   |     | NULL    |       |
+| car_cor | varchar(15) | NO   |     | NULL    |       |
+| car_pla | varchar(7)  | NO   | UNI | NULL    |       |
+| car_pre | float(10,2) | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+7 rows in set (0.03 sec)
+
+mysql> show databases
+    -> ;
++----------------------+
+| Database             |
++----------------------+
+| information_schema   |
+| mysql                |
+| performance_schema   |
+| posto_de_combustivel |
+| sys                  |
+| teste25              |
++----------------------+
+6 rows in set (0.00 sec)
+
+mysql> create table aluno(
+    -> alu_cod int primary key,
+    -> alu_nom varchar(20) not null,
+    -> alu_ida int not null,
+    -> alu_cpf int not null unique,
+    -> alu_rg varchar(9) not null unique,
+    -> alu_tel int not null,
+    -> alu_tur varchar(5) not null
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc aluno;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| alu_cod | int         | NO   | PRI | NULL    |       |
+| alu_nom | varchar(20) | NO   |     | NULL    |       |
+| alu_ida | int         | NO   |     | NULL    |       |
+| alu_cpf | int         | NO   | UNI | NULL    |       |
+| alu_rg  | varchar(9)  | NO   | UNI | NULL    |       |
+| alu_tel | int         | NO   |     | NULL    |       |
+| alu_tur | varchar(5)  | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> create table convidados(
+    -> con_cod int primary key,
+    -> con_nom varchar(20) not null,
+    -> con_cpf int not null unique,
+    -> con_rg varchar(9) not null unique,
+    -> con_aco int not null,
+    -> con_con varchar(3) not null,
+    -> con_tel int not null
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> desc convidados:
+    -> desc convidados;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':
+desc convidados' at line 1
+mysql> desc convidados;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| con_cod | int         | NO   | PRI | NULL    |       |
+| con_nom | varchar(20) | NO   |     | NULL    |       |
+| con_cpf | int         | NO   | UNI | NULL    |       |
+| con_rg  | varchar(9)  | NO   | UNI | NULL    |       |
+| con_aco | int         | NO   |     | NULL    |       |
+| con_con | varchar(3)  | NO   |     | NULL    |       |
+| con_tel | int         | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> insert into carro values (1, 'Puro Sangue', 'Ferrari', 2025, 'Vermelha', 'FRY52U7', 80000,00');
+    '> insert into carro values (1, 'Puro Sangue', 'Ferrari', 2025, 'Vermelha', ;
+    '> ';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '');
+insert into carro values (1, 'Puro Sangue', 'Ferrari', 2025, 'Vermelha', ;
+'' at line 1
+mysql> insert into carro values (1, 'Puro Sangue', 'Ferrari', 2025, 'Vermelha', 'FRY52U7', 80000.00);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into carros values (2, 'Gol', 'Wolks', 1999, 'Branco', 'ERF67U8', 20000.00);
+ERROR 1146 (42S02): Table 'teste25.carros' doesn't exist
+mysql> insert into carro values (2, 'Gol', 'Wolks', 1999, 'Branco', 'ERF67U8', 20000.00);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into carro values (3, 'Corsa', 'Chevrolet', '1998', 'Preta', 'CKP8B17', 25000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from carro;
++---------+-------------+-----------+---------+----------+---------+----------+
+| car_cod | car_nom     | car_mar   | car_ano | car_cor  | car_pla | car_pre  |
++---------+-------------+-----------+---------+----------+---------+----------+
+|       1 | Puro Sangue | Ferrari   |    2025 | Vermelha | FRY52U7 | 80000.00 |
+|       2 | Gol         | Wolks     |    1999 | Branco   | ERF67U8 | 20000.00 |
+|       3 | Corsa       | Chevrolet |    1998 | Preta    | CKP8B17 | 25000.00 |
++---------+-------------+-----------+---------+----------+---------+----------+
+3 rows in set (0.00 sec)
+
+mysql> insert into aluno values (1, 'Yuri', 22, 08452927809, '689632569', 11343267890, '5C'0;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0' at line 1
+mysql> insert into aluno values (1, 'Yuri', 22, 08452927809, '689632569', 11343267890, '5C');
+ERROR 1264 (22003): Out of range value for column 'alu_cpf' at row 1
+mysql> insert into aluno values (1, 'Yuri', 22, 084.529.278-09, '689632569', 11343267890, '5C');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.278-09, '689632569', 11343267890, '5C')' at line 1
+mysql> insert into aluno values (1, 'Yuri', 22, 084.529.278-09, '689632569', 11343267890, 'C');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.278-09, '689632569', 11343267890, 'C')' at line 1
+mysql> insert into aluno values (1, 'Yuri', 22, 08452927809, '689632569', 11343267890, '5C');
+ERROR 1264 (22003): Out of range value for column 'alu_cpf' at row 1
+mysql> insert into aluno values (1, 'Yuri', 22, 0845292789, '89632569', 11343267890, '5C');
+ERROR 1264 (22003): Out of range value for column 'alu_tel' at row 1
+mysql> insert into aluno values (1, 'Yuri', 22, 0845292789, '89632569', 1134326780, '5C');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into aluno values (2, 'Jorge', 23, 5245895264, '5840214', 1458796320, '7B');
+ERROR 1264 (22003): Out of range value for column 'alu_cpf' at row 1
+mysql> insert into aluno values (2, 'Jorge', 23, 524589524, '5840214', 1458796320, '7B');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into aluno values (3, 'Yasmin', 22, 589632547, '8569325', 521478962, '8D');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from aluno;
++---------+---------+---------+-----------+----------+------------+---------+
+| alu_cod | alu_nom | alu_ida | alu_cpf   | alu_rg   | alu_tel    | alu_tur |
++---------+---------+---------+-----------+----------+------------+---------+
+|       1 | Yuri    |      22 | 845292789 | 89632569 | 1134326780 | 5C      |
+|       2 | Jorge   |      23 | 524589524 | 5840214  | 1458796320 | 7B      |
+|       3 | Yasmin  |      22 | 589632547 | 8569325  |  521478962 | 8D      |
++---------+---------+---------+-----------+----------+------------+---------+
+3 rows in set (0.00 sec)
+
+mysql> insert into convidados values (1, 'Ana', 523698744, '5265412', 2, 'Maria. Julia', 256856320);
+ERROR 1406 (22001): Data too long for column 'con_con' at row 1
+mysql> insert into convidados values (1, 'Ana', 523698744, '5265412', 2, 'Maria.Julia', 256856320);
+ERROR 1406 (22001): Data too long for column 'con_con' at row 1
+mysql> insert into convidados values (1, 'Ana', 523698744, '5265412', 2, '2', 256856320);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> (insert into convidados values (2, 'Tania', 521458963, '4425687', 5, '1', 526854145);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into convidados values (2, 'Tania', 521458963, '4425687', 5, '1', 5268541' at line 1
+mysql> insert into convidados values (2, 'Tania', 521458963, '4425687', 5, '1', 526854145);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into convidados values (3, 'Messi', 563254896, '5214568', 4, '1', 521489632);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from convidados;
++---------+---------+-----------+---------+---------+---------+-----------+
+| con_cod | con_nom | con_cpf   | con_rg  | con_aco | con_con | con_tel   |
++---------+---------+-----------+---------+---------+---------+-----------+
+|       1 | Ana     | 523698744 | 5265412 |       2 | 2       | 256856320 |
+|       2 | Tania   | 521458963 | 4425687 |       5 | 1       | 526854145 |
+|       3 | Messi   | 563254896 | 5214568 |       4 | 1       | 521489632 |
++---------+---------+-----------+---------+---------+---------+-----------+
+3 rows in set (0.00 sec)
+
+mysql>
