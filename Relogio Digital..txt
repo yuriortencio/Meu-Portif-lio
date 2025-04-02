@@ -1,0 +1,55 @@
+<body>
+    <p id='relogio'>00:00:00</p>
+    <input type="button" value="Pausar" 
+    id="botao" onclick="pausaRetoma()">
+</body>
+<style>
+    body{
+        background-color:black;
+    }
+    
+    #relogio{
+        font-size:200px;
+        font-weight: bold;
+        margin-top:30px;
+        color:white;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+</style>
+
+<script>
+    funcionando = true;
+pausaRetoma = function(){
+    if(funcionando==true){
+        funcionando=false;
+        document.getElementById('botao').value = 'Retomar';
+    }
+    else{
+        document.getElementById('botao').value = 'Pausar';
+        funcionando=true;
+    }
+}
+
+    atualizarRelogio = function(){
+
+        // if(funcionando == false)
+        if(!funcionando)
+            return;
+
+        horaAtual = new Date();
+        hora = horaAtual.getHours().toString().padStart(2,'0');
+        minuto = horaAtual.getMinutes().toString().padStart(2,'0');
+        segundo = horaAtual.getSeconds().toString().padStart(2,'0');
+    
+        texto = hora + ':' + minuto 
+        + ':' + segundo; 
+      
+        document.getElementById('relogio').
+        textContent = texto;
+    }
+    atualizarRelogio();
+    setInterval(atualizarRelogio,1000);
+    
+    </script>
