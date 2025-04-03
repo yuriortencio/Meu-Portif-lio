@@ -1,0 +1,169 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 23
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++----------------------+
+| Database             |
++----------------------+
+| information_schema   |
+| mysql                |
+| performance_schema   |
+| posto_de_combustivel |
+| sys                  |
+| teste25              |
++----------------------+
+6 rows in set (0.02 sec)
+
+mysql> use teste25;
+Database changed
+mysql> create table time (
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table jogadore (
+    -> ;;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+ERROR:
+No query specified
+
+mysql> create table jogadore (
+    -> jog_cod int primary key,
+    -> jog_nom varchar(20) not nulll,
+    -> jogador_cpf digint unique);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'nulll,
+jogador_cpf digint unique)' at line 3
+mysql> create table jogadore (
+    -> jog_cod int primary key,
+    -> jog_nom varchar(20) not nulll,
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'nulll,' at line 3
+mysql> create table jogadore (
+    -> jog_cod int primary key,
+    -> jog_nom varchar(20) not null,
+    -> jogador_cpf digint unique);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'digint unique)' at line 4
+mysql> create table jogadore (
+    -> jog_cod int primary key,
+    -> jog_nom varchar(20) not null,
+    -> jogador_cpf digint unique
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'digint unique
+)' at line 4
+mysql> create table jogadore (
+    -> jog_cod int primary key,
+    -> jog_nom varchar(20) not null,
+    -> jogador_cpf bigint unique
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> desc jogadore;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| jog_cod     | int         | NO   | PRI | NULL    |       |
+| jog_nom     | varchar(20) | NO   |     | NULL    |       |
+| jogador_cpf | bigint      | YES  | UNI | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table jogadore add jog_sal float(10,2) not null;
+Query OK, 0 rows affected, 1 warning (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> desc jogadore;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| jog_cod     | int         | NO   | PRI | NULL    |       |
+| jog_nom     | varchar(20) | NO   |     | NULL    |       |
+| jogador_cpf | bigint      | YES  | UNI | NULL    |       |
+| jog_sal     | float(10,2) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table jogadore drop column jog_sal;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc jogadore;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| jog_cod     | int         | NO   | PRI | NULL    |       |
+| jog_nom     | varchar(20) | NO   |     | NULL    |       |
+| jogador_cpf | bigint      | YES  | UNI | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table jogadore modify column jog_nom varchar(50) not null;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc jogadore;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| jog_cod     | int         | NO   | PRI | NULL    |       |
+| jog_nom     | varchar(50) | NO   |     | NULL    |       |
+| jogador_cpf | bigint      | YES  | UNI | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table jogadore rename jogadores;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc jogadores;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| jog_cod     | int         | NO   | PRI | NULL    |       |
+| jog_nom     | varchar(50) | NO   |     | NULL    |       |
+| jogador_cpf | bigint      | YES  | UNI | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table jogadores change jog_nom jog_sob varchar(20) not null;
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc jogadores;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| jog_cod     | int         | NO   | PRI | NULL    |       |
+| jog_sob     | varchar(20) | NO   |     | NULL    |       |
+| jogador_cpf | bigint      | YES  | UNI | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table jogadores change jog_ssob jog_nom varchar(20) not null;
+ERROR 1054 (42S22): Unknown column 'jog_ssob' in 'jogadores'
+mysql> alter table jogadores change job_sob jog_nom varchar(20) not null;
+ERROR 1054 (42S22): Unknown column 'job_sob' in 'jogadores'
+mysql> alter table jogadores change jogador_cpf jog_cpf bigint unique;
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> desc jogadores;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| jog_cod | int         | NO   | PRI | NULL    |       |
+| jog_sob | varchar(20) | NO   |     | NULL    |       |
+| jog_cpf | bigint      | YES  | UNI | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql>
